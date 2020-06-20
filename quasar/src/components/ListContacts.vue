@@ -1,10 +1,20 @@
 <template>
   <div>
-    <q-toolbar class='bg-primary text-white shadow-2'>
-      <q-toolbar-title>Contacts</q-toolbar-title>
+    <q-toolbar v-if="!searching" class="bg-primary text-white">
+      <q-toolbar-title>App</q-toolbar-title>
+
+      <q-btn flat round dense icon="search" @click="searching = true" />
     </q-toolbar>
 
+    <q-input v-if="searching" v-model="text" placeholder="Search" maxlength="12">
+        <template v-slot:before>
+          <q-btn flat round dense icon="arrow_back" @click="searching = false" />
+        </template>
+      </q-input>
+
     <q-list bordered>
+      <q-item-label header>Onlines</q-item-label>
+
       <q-item v-for='contact in contacts' :key='contact.id' class='q-my-sm' clickable v-ripple>
         <q-item-section avatar>
           <q-avatar color='primary' text-color='white'>{{ contact.letter }}</q-avatar>
@@ -91,6 +101,8 @@ export default {
     return {
       contacts,
       offline,
+      searching: false,
+      text: '',
     };
   },
 };
