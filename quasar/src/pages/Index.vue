@@ -1,14 +1,15 @@
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-full.svg"
-    >
+  <q-page class="">
+    <list-contacts />
   </q-page>
 </template>
 
 <script>
+
+import ListContacts from '../components/ListContacts';
+
 export default {
   name: 'PageIndex',
+  components: { ListContacts },
 };
 </script>
