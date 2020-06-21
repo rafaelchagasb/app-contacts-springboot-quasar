@@ -1,5 +1,7 @@
 # App for managing your contacts
 
+# In development
+
 ## About
 
 - Spring boot
