@@ -1,17 +1,21 @@
 # App for managing your contacts
 
-Tecnologies
+## About
 
 - Spring boot
 - [Quasar framework - VueJS](https://quasar.dev/)
 
 
-Quasar project
+## Quasar project
 
-Install dependencies
-    
-    npm install
-    
-Run project
-    
-    quasar dev
+    Install dependencies
+
+        npm install
+
+    Run project
+
+        quasar dev
+
+## Spring boot
+
+    mvn spring-boot:run
