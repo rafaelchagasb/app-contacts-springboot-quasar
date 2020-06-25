@@ -16,8 +16,10 @@
       <q-item-label header>Onlines</q-item-label>
 
       <q-item v-for='contact in contacts' :key='contact.id' class='q-my-sm' clickable v-ripple>
-        <q-item-section avatar>
-          <q-avatar color='primary' text-color='white'>{{ contact.letter }}</q-avatar>
+        <q-item-section avatar @click="showDetail = true; selectedContact = contact">
+          <q-avatar>
+            <q-img :src="contact.avatar" :ratio="1" />
+          </q-avatar>
         </q-item-section>
 
         <q-item-section>
@@ -31,7 +33,7 @@
       </q-item>
 
       <q-separator />
-      <q-item-label header>Offline</q-item-label>
+      <!-- <q-item-label header>Offline</q-item-label>
 
       <q-item v-for='contact in offline' :key='contact.id' class='q-mb-sm' clickable v-ripple>
         <q-item-section avatar>
@@ -48,8 +50,11 @@
         <q-item-section side>
           <q-icon name='chat_bubble' color='grey' />
         </q-item-section>
-      </q-item>
+      </q-item> -->
     </q-list>
+
+    <detail-contact v-model="showDetail" :contact="selectedContact" />
+
   </div>
 </template>
 
@@ -60,50 +65,45 @@ const contacts = [
     name: 'Ruddy Jedrzej',
     email: 'rjedrzej0@discuz.net',
     letter: 'R',
+    avatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Andrzej_Person_Kancelaria_Senatu.jpg/400px-Andrzej_Person_Kancelaria_Senatu.jpg',
   },
   {
     id: 2,
     name: 'Mallorie Alessandrini',
     email: 'malessandrini1@marketwatch.com',
     letter: 'M',
+    avatar: 'http://cassavafilms.com/wp-content/uploads/2013/01/100522-glennclose.jpg',
   },
   {
     id: 3,
-    name: 'Elisabetta Wicklen',
-    email: 'ewicklen2@microsoft.com',
+    name: 'Samuel',
+    email: 'sam @microsoft.com',
     letter: 'E',
+    avatar: 'https://cdn.britannica.com/77/191077-050-63262B99/Samuel-L-Jackson.jpg',
   },
   {
     id: 4,
-    name: 'Seka Fawdrey',
+    name: 'Sheldon',
     email: 'sfawdrey3@wired.com',
     letter: 'S',
+    avatar: 'https://pbs.twimg.com/profile_images/365042597/sheldon_400x400.jpg',
   },
 ];
 
-const offline = [
-  {
-    id: 5,
-    name: 'Brunhilde Panswick',
-    email: 'bpanswick4@csmonitor.com',
-    avatar: 'avatar2.jpg',
-  },
-  {
-    id: 6,
-    name: 'Winfield Stapforth',
-    email: 'wstapforth5@pcworld.com',
-    avatar: 'avatar6.jpg',
-  },
-];
+import DetailContact from './DetailContact';
 
 export default {
   data() {
     return {
       contacts,
-      offline,
       searching: false,
       text: '',
+      showDetail: false,
+      selectedContact: undefined,
     };
+  },
+  components: {
+    DetailContact,
   },
 };
 </script>
