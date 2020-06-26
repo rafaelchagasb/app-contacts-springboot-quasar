@@ -22,7 +22,7 @@
           </q-avatar>
         </q-item-section>
 
-        <q-item-section>
+        <q-item-section @click="openChat">
           <q-item-label>{{ contact.name }}</q-item-label>
           <q-item-label caption lines='1'>{{ contact.email }}</q-item-label>
         </q-item-section>
@@ -104,6 +104,11 @@ export default {
   },
   components: {
     DetailContact,
+  },
+  methods: {
+    openChat() {
+      this.$router.push({ path: 'chat' });
+    },
   },
 };
 </script>
